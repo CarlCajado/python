@@ -1,0 +1,36 @@
+import cpu
+import platform
+print("-="*30)
+print("-="*10,"informações do Dispositivo ","-="*10)
+print("-="*30)
+print("SISTEMA OPERACIONAL: ",cpu.os())
+print("versão: " ,cpu.osVersion())
+print("")
+print("-="*10,"Processador ","-="*10)
+print(f"Descrição  : {platform.processor()}")
+print ("N° Cores Totais: ", cpu.cores())
+print ("N° Cores Virtuais: ",cpu.phycores())
+print(f"Normal Frequencia: {cpu.frequencia()} GHz")
+print(f"MAX Frequencia: {cpu.frequenciaMX()} GHz")
+print(f"MENOR Frequencia : { cpu.frequenciaMin()} GHz")
+print("")
+print("-="*10," Mémoria RAM ","-="*10)
+print(f"QUANT Total : {cpu.vm():.2f} GB")
+print(f"QUANT Utilizada Atualmente : {cpu.memory().used/(1024000000):.2f} GB")
+print(f"QUANT Livre : {cpu.memory().free/(1024000000):.2f} GB")
+print(f"Pocentagem : {cpu.memory().percent}%")
+print("")
+print("-="*10,"HD","-="*10)
+print(f"Capacidade Total : {cpu.test().total/(1024000000):.2f} GB")
+print(f"Usado : {cpu.test().used/(1024000000):.2f}GB")
+print(f"Livre: {cpu.test().free/(1024000000):.2f}GB")
+print(f"Porcentagem Usada: {cpu.test().percent}%")
+
+
+print("")
+print("-="*10," Bateria ","-="*10)
+print(f"Carga da Bateria: {cpu.temp().percent}%")
+if cpu.temp().power_plugged == True:
+    print("Status: Carregando")
+else:
+    print("Status: Fora da tomada")
